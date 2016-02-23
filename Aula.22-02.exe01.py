@@ -1,10 +1,16 @@
-import math
+def fat(num):
+    t=1
+    for i in range(num):
+        t = t*(num)
+        num -= 1
+    return t
 
-def combinacoes(x,y):
-    comb = math.factorial(x)/(math.factorial(y) * math.factorial(x-y))
-    return comb
+
+def comb(x,y):
+    c = fat(x)/(fat(y) * fat(x-y))
+    return c
 
 n = int(input("Informe o número total de alunos na turma:"))
 m = int(input("Informe um número de alunos num grupo:"))
 
-print("Existem",combinacoes(n,m),"combinações possíveis!")
+print("Existem",comb(n,m),"combinações possíveis!")
