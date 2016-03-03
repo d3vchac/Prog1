@@ -1,0 +1,22 @@
+import random
+
+arqNome = open('nomes.txt')
+arqSobre = open('sobrenomes.txt')
+arqComp = open('completo.txt','a')
+
+nome = []
+nome.append(arqNome.read())
+nome = nome[0].split(' ')
+
+sobrenome = []
+sobrenome.append(arqSobre.read())
+sobrenome = sobrenome[0].split(' ')
+
+print(nome)
+print(sobrenome)
+
+for i in len(nome):
+
+arqComp.write()
+
+...
