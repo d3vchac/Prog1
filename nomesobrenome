@@ -2,7 +2,7 @@ import random
 
 arqNome = open('nomes.txt')
 arqSobre = open('sobrenomes.txt')
-arqComp = open('completo.txt','a')
+arqComp = open('completo.txt','w')
 
 nome = []
 nome.append(arqNome.read())
@@ -15,8 +15,21 @@ sobrenome = sobrenome[0].split(' ')
 print(nome)
 print(sobrenome)
 
-for i in len(nome):
+comp = []
+for i in range(len(nome)):
+    comp.append(nome[random.randint(0,19)] + ' ' + sobrenome[random.randint(0,19)] + ' ,')
 
-arqComp.write()
+arqComp.writelines(comp[:])
 
-...
+arqComp.close()
+arqNome.close()
+arqSobre.close()
+
+arqComp = open('completo.txt','w')
+
+for i in range(len(comp)):
+    comp[i] = comp[i].replace(",",str(random.randint(0,100))+", ")
+
+arqComp.writelines(comp[:])
+
+arqComp.close()
