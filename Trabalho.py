@@ -23,6 +23,7 @@ def mtz_txt(matriz,nomeArq):
     arq.close()
 
 def ad_existente(nomeArq):
+
     print('Gostaria de adicionar outro(s) aluno(s)? \n(s ou n):')
     continua = input()
     if continua.capitalize() == 'S':
@@ -38,8 +39,6 @@ def ad_existente(nomeArq):
                 break
             continua = input('Deseja inserir outro aluno? \n( s ou n ):')
         mtz_txt(m,nomeArq)
-
-    return
 
 def criar_arquivo(nomeArq):
     tab = []
@@ -69,7 +68,7 @@ def consulta_aluno(nomeArq):
             aluno = input('Digite o nome do aluno:')
 
             for i in range(len(m)):
-                if m[i][0] == aluno:
+                if m[i][0] == aluno.capitalize():
                     print('Nome:',m[i][0])
                     print('Nota 1:',m[i][1])
                     print('Nota 2:',m[i][2])
@@ -342,23 +341,23 @@ def menu_principal():
     print('(1) Selecionar arquivo')
     print('(2) Criar arquivo')
     print('(0) Sair')
-    opt = eval(input('Opção:'))
+    opt = input('Opção:')
 
-    if opt == 1:
+    if opt == '1':
         nome = input('\nDigite o nome do arquivo:')
         ad_existente(nome)
         menu_sec(nome)
         return nome
-    elif opt == 2:
+    elif opt == '2':
         nome = input('\nDigite o nome do novo arquivo:')
         criar_arquivo(nome)
         menu_sec(nome)
         return nome
-    elif opt == 0:
+    elif opt == '0':
         print('\n\nTchau!')
     else:
         print('Opção inválida!\n\n')
-        menu_principal()
+        return menu_principal()
 
 def menu_sec(n):
     print('\n')
@@ -372,31 +371,30 @@ def menu_sec(n):
     print('(7) Listar')
     print('(8) Trocar de arquivo')
     print('(0) Sair')
-    print('\nOpção:')
-    opt = eval(input())
+    opt = input('Opção:')
 
-    if opt == 1:
+    if opt == '1':
         consulta_aluno(n)
         menu_sec(n)
-    elif opt == 2:
+    elif opt == '2':
         edita_registro(n)
         menu_sec(n)
-    elif opt == 3:
+    elif opt == '3':
         apaga_registro(n)
         menu_sec(n)
-    elif opt == 4:
+    elif opt == '4':
         maior_nota(n)
         menu_sec(n)
-    elif opt == 5:
+    elif opt == '5':
         menor_nota(n)
         menu_sec(n)
-    elif opt == 6:
+    elif opt == '6':
         medias(n)
         menu_sec(n)
-    elif opt == 7:
+    elif opt == '7':
         listar(n)
         menu_sec(n)
-    elif opt == 8 or opt == 0:
+    elif opt == '8' or opt == '0':
         menu_principal()
     else:
         print('Opção inválida!')
